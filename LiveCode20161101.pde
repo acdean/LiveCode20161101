@@ -1,12 +1,12 @@
 import peasy.*;
 
 int DOTS = 100;
-float MAX_SPEED = 3.0;
+float MAX_SPEED = 5.0;
 float DIST2 = 100 * 100;
 
 PeasyCam cam;
 ArrayList<Dot> dots = new ArrayList<Dot>(DOTS);
-boolean video = true;
+boolean video = false;
 
 void setup() {
   size(640, 360, P3D);
@@ -54,7 +54,7 @@ class Dot {
     pos = new PVector(random(-width, width), random(-height, height));
     vel = PVector.random2D();
     vel.mult(MAX_SPEED);
-    c = color(random(0, 256), random(0, 256), random(0, 256));
+    c = color(random(128, 256), random(128, 256), random(128, 256));
   }
   
   void draw() {
