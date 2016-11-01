@@ -6,7 +6,7 @@ float DIST2 = 50 * 50;
 
 PeasyCam cam;
 ArrayList<Dot> dots = new ArrayList<Dot>(DOTS);
-boolean video = true;
+boolean video = false;
 
 void setup() {
   size(640, 360);
@@ -68,4 +68,8 @@ class Dot {
     strokeWeight(5);
     point(pos.x, pos.y);
   }
+}
+
+void keyPressed() {
+  saveFrame("frame####.png");
 }
