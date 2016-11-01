@@ -2,7 +2,7 @@ import peasy.*;
 
 int DOTS = 100;
 float MAX_SPEED = 3.0;
-float DIST2 = 50 * 50;
+float DIST2 = 100 * 100;
 
 PeasyCam cam;
 ArrayList<Dot> dots = new ArrayList<Dot>(DOTS);
@@ -10,7 +10,7 @@ boolean video = false;
 
 void setup() {
   size(640, 360, P3D);
-  cam = new PeasyCam(this, 200);
+  cam = new PeasyCam(this, 300);
   for (int i = 0 ; i < DOTS ; i++) {
     dots.add(new Dot());
   }
