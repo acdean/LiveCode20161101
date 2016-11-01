@@ -9,8 +9,8 @@ ArrayList<Dot> dots = new ArrayList<Dot>(DOTS);
 boolean video = false;
 
 void setup() {
-  size(640, 360);
-  cam = new PeasyCam(this, 100);
+  size(640, 360, P3D);
+  cam = new PeasyCam(this, 200);
   for (int i = 0 ; i < DOTS ; i++) {
     dots.add(new Dot());
   }
@@ -51,8 +51,7 @@ class Dot {
   color c;
   
   Dot() {
-    pos = PVector.random2D();
-    pos.mult(height);
+    pos = new PVector(random(-width, width), random(-height, height));
     vel = PVector.random2D();
     vel.mult(MAX_SPEED);
     c = color(random(0, 256), random(0, 256), random(0, 256));
@@ -61,8 +60,18 @@ class Dot {
   void draw() {
     pos.add(vel);
     // wrap
-    pos.x = (pos.x + width) % width; 
-    pos.y = (pos.y + height) % height;
+    if (pos.x < -width) {
+      pos.x = width;
+    }
+    if (pos.x > width) {
+      pos.x = -width;
+    }
+    if (pos.y < -height) {
+      pos.y = height;
+    }
+    if (pos.y > height) {
+      pos.y = -height;
+    }
     fill(0);
     stroke(c);
     strokeWeight(5);
