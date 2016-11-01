@@ -6,7 +6,7 @@ float DIST2 = 100 * 100;
 
 PeasyCam cam;
 ArrayList<Dot> dots = new ArrayList<Dot>(DOTS);
-boolean video = false;
+boolean video = true;
 
 void setup() {
   size(640, 360, P3D);
