@@ -1,11 +1,12 @@
 import peasy.*;
 
-int DOTS = 50;
+int DOTS = 100;
 float MAX_SPEED = 3.0;
 float DIST2 = 50 * 50;
 
 PeasyCam cam;
 ArrayList<Dot> dots = new ArrayList<Dot>(DOTS);
+boolean video = true;
 
 void setup() {
   size(640, 360);
@@ -20,13 +21,26 @@ void draw() {
   for (Dot dot : dots) {
     dot.draw();
   }
+  
+  beginShape(LINES);
   for (int i = 0 ; i < DOTS ; i++) {
     Dot idot = dots.get(i);
     for (int j = i + 1 ; j < DOTS ; j++) {
       Dot jdot = dots.get(j);
-      if (sq(idot.x - jdot.x) + sq(idot.y - jdot.y) < DIST2) {
-        line(idot.x, idot.y, jdot.x, jdot.y);
+      if (sq(idot.pos.x - jdot.pos.x) + sq(idot.pos.y - jdot.pos.y) < DIST2) {
+        stroke(idot.c);
+        vertex(idot.pos.x, idot.pos.y);
+        stroke(jdot.c);
+        vertex(jdot.pos.x, jdot.pos.y);
       }
+    }
+  }
+  endShape();
+  
+  if (video) {
+    saveFrame("frame#####.png");
+    if (frameCount > 500) {
+      exit();
     }
   }
 }
