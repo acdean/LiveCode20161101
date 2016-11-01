@@ -10,7 +10,7 @@ boolean video = false;
 
 void setup() {
   size(640, 360, P3D);
-  cam = new PeasyCam(this, 300);
+  cam = new PeasyCam(this, 400);
   for (int i = 0 ; i < DOTS ; i++) {
     dots.add(new Dot());
   }
